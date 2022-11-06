@@ -1,5 +1,5 @@
-function generateMatrix(matLength, gr, grEa, pred,booom,qaaar,all) {
-    let matrix = [];
+let matrixx= [];
+function generateMatrix(matLength, gr, grEa, pred,booom,all,matrix) {
     for (let i = 0; i < matLength; i++) {
         matrix.push([])
         for (let j = 0; j < matLength; j++) {
@@ -34,13 +34,6 @@ function generateMatrix(matLength, gr, grEa, pred,booom,qaaar,all) {
             matrix[x][y] = 4;
         }
     }
-    for (let i = 0; i < qaaar; i++) {
-        let x = Math.floor(Math.random() * matLength);
-        let y = Math.floor(Math.random() * matLength);
-        if (matrix[y][x] == 0) {
-            matrix[x][y] = 5;
-        }
-    }
     for (let i = 0; i < all; i++) {
         let x = Math.floor(Math.random() * matLength);
         let y = Math.floor(Math.random() * matLength);
@@ -51,8 +44,11 @@ function generateMatrix(matLength, gr, grEa, pred,booom,qaaar,all) {
     return matrix;
 }
 
+let matrix = generateMatrix(30,300,50,50,30,30,matrixx)
 
-let matrix = generateMatrix(30,300,50,50,30,30,30)
+
+
+
 
 var side = 25;
 
@@ -64,6 +60,13 @@ let qarArr = []
 let allEaterArr = []
 
 function setup() {
+//     for (let i = 0; i < 30; i++) {
+//         let x = Math.floor(Math.random() * 30);
+//         let y = Math.floor(Math.random() * 30);
+//         if (matrix[y][x] == 0) {
+//             matrix[x][y] = 5;
+//         }
+//     }
     frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
@@ -93,10 +96,10 @@ function setup() {
     }
     
 
-
+}
             
 
-}
+
 
 function draw() {
     for (var y = 0; y < matrix.length; y++) {
@@ -117,10 +120,10 @@ function draw() {
             {
                 fill("black")
             }
-            else if (matrix[y][x]==5)
-            {
-                fill("blue")
-            }
+            // else if (matrix[y][x]==5)
+            // {
+            //     fill("blue")
+            // }
             else if (matrix[y][x]==6)
             {
                 fill("white")
@@ -143,9 +146,6 @@ function draw() {
     for (let i in predatorArr) {
         predatorArr[i].eat()
     }
-    for (let i in qarArr) {
-       qarArr[i].mul()
-     }
     for (let i in bombarr) {
         bombarr[i].explode()
     }
